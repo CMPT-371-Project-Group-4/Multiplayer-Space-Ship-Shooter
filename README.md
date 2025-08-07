@@ -1,4 +1,4 @@
-# The Terminator
+# <u> The Terminator </u>
 
 This Game was made using Python and PyGame, and the backend was made using Python Sockets. 
 The README.md, client.py, and server.py are all in the root folder along with the images used for the game

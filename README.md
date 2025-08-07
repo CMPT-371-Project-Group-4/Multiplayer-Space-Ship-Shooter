@@ -13,7 +13,7 @@ In the terminal before running either 'client.py' or 'server.py', make sure PyGa
 pip install pygame
 ```
 
-# Running the Game
+## Running the Game
 
 In order to run the game, the user must do the following steps in order as written: 
 

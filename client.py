@@ -51,10 +51,10 @@ btn_ready = btn_quit = btn_play_again = btn_exit = None
 # Initialize network connection
 def init_network():
   global client_socket
-  client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-  client_socket.connect((SERVER_HOST, SERVER_PORT))
-  print("[NETWORK] Connected to server")
-  threading.Thread(target=receive_loop, daemon=True).start()
+  client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # Creates a TCP/IPv4 socket
+  client_socket.connect((SERVER_HOST, SERVER_PORT))                  # Connects to the server address
+  print("[NETWORK] Connected to server")                             # Message to confirm connection
+  threading.Thread(target=receive_loop, daemon=True).start()         # Starts background loop
 
 # Send a JSON message to the server
 def send(msg):

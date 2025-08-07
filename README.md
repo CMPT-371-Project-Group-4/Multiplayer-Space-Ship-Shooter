@@ -1,12 +1,17 @@
 # <u> The Terminator </u>
 
 This Game was made using Python and PyGame, and the backend was made using Python Sockets. 
-The README.md, client.py, and server.py are all in the root folder along with the images used for the game
+The 'README.md', 'client.py', and 'server.py' are all in the root folder along with the images used for the game
 
-# Requirements
+---
 
-In the terminal before running either client.py or server.py, make sure "pygame" is installed 
- > <u> pip install pygame </u>
+## Requirements
+
+In the terminal before running either 'client.py' or 'server.py', make sure PyGame is installed:
+
+```bash
+pip install pygame
+```
 
 # Running the Game
 

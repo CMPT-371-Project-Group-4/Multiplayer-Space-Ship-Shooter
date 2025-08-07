@@ -6,7 +6,7 @@ The README.md, client.py, and server.py are all in the root folder along with th
 # Requirements
 
 In the terminal before running either client.py or server.py, make sure "pygame" is installed 
-<u> pip install pygame </u>
+ > <u> pip install pygame </u>
 
 # Running the Game
 

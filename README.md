@@ -18,7 +18,7 @@ pip install pygame
 In order to run the game, the user must do the following steps in order as written: 
 
 1.) start the server
-> python server.py
+> ``` python server.py ```
 
 2.) Launch each client (server.py specifies number of clients on line 11)
-> python client.py
+> ``` python client.py ```

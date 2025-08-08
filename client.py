@@ -166,6 +166,9 @@ def draw_countdown():
   global countdown
   text = font_large.render(countdown, True, (255, 255, 255))  # white text
   rect = text.get_rect(center=(WIDTH // 2, HEIGHT // 2))
+  text2 = font_small.render(f"You are {my_id}",True, (255, 255, 255))
+  rect2 = text2.get_rect(center=(WIDTH // 2, (HEIGHT // 2)-200))
+  window.blit(text2,rect2)
   window.blit(text, rect)
   if countdown == "GO!" and go_time and time.time() - go_time > 1:
     countdown = None  # Clear countdown after 1 second

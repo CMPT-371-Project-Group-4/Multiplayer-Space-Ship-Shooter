@@ -8,7 +8,7 @@ import time
 # Config
 HOST = ""
 PORT = 12345
-MAX_PLAYERS = 2
+MAX_PLAYERS = 4
 MAP_WIDTH, MAP_HEIGHT = 800, 600
 FPS_SLEEP = 1 / 60  # 60 FPS
 MAX_HP = 100

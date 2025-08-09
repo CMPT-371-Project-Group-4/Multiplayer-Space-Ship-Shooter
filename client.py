@@ -20,6 +20,7 @@ my_id = None
 players = {}  # player_id -> {x, y, hp, alive, angle}
 health_packs = {}  # id -> (x, y)
 bullets = []  # list of {id, x, y, dx, dy, owner}
+pending_pickups = set() 
 ready = False
 game_started = False
 running = True
@@ -111,12 +112,16 @@ def handle_message(msg):
 
         case "REMOVE_OBJECT":
             health_packs.pop(msg["id"], None)
+            pending_pickups.discard(msg["id"])                                           
 
         case "PICKUP_GRANTED":
             if msg["player_id"] == my_id:
                 print(f"[PICKUP GRANTED] You picked up a health pack!")
+                pending_pickups.discard(msg["healthpack_id"])                         
+                health_packs.pop(msg["healthpack_id"], None)
 
         case "PICKUP_DENIED":
+            pending_pickups.discard(msg["healthpack_id"])                             
             print(f"[PICKUP DENIED] Health pack {msg['healthpack_id']}")
 
         case "HP_UPDATE":
@@ -257,9 +262,12 @@ def update_player():
     # Auto-pickup health packs if over one
     px, py = p["x"], p["y"]
     for pack_id, (hx, hy) in list(health_packs.items()):
+        if pack_id in pending_pickups:                                                      
+            continue
         dist = math.hypot(px - hx, py - hy)
         if dist < 20:  # close enough to pick up
             send({"type": "PICKUP_REQUEST", "healthpack_id": pack_id})
+            pending_pickups.add(pack_id)                                                    
             break  # only pickup one per frame
 
 

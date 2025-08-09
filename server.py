@@ -6,7 +6,7 @@ import threading
 import time
 
 # Config
-HOST = ""
+HOST = "0.0.0.0"
 PORT = 12345
 MAX_PLAYERS = 4
 MAP_WIDTH, MAP_HEIGHT = 800, 600
@@ -140,7 +140,10 @@ def handle_pickup_request(pid, hid, client):
         pack = health_packs.get(hid)
         if pack and not pack["claimed"]:
             pack["claimed"] = True
+            pack["owner"] = pid                     
             granted = True
+        elif pack and pack.get("owner") == pid:
+            return # duplicate from the winner, ignore
 
     # If granted, heal the player and notify all clients
     if granted:
@@ -270,7 +273,7 @@ def spawn_health_packs():
 
         # Add health pack to the shared state
         with healthpack_lock:
-            health_packs[hid] = {"x": x, "y": y, "claimed": False}
+            health_packs[hid] = {"x": x, "y": y, "claimed": False, "owner": None} 
 
         # Broadcast health pack spawn
         broadcast({"type": "SPAWN_HEALTHPACK", "id": hid, "x": x, "y": y})

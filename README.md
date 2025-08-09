@@ -12,8 +12,8 @@ In the terminal before running either 'client.py' or 'server.py', make sure PyGa
 ```bash
 pip install pygame
 ```
-Before running client.py, open the file and set SERVER_HOST to the IP address of the machine running the server. 
-> Also set the amount of players you want to play the game where it says 'MAX_PLAYERS'
+Before running client.py,open the file and set ```SERVER_HOST = 'localhost'``` to the lan address of the machine running the server. 
+> Also set the amount of players you want to play the game where it says ```MAX_PLAYERS = ```
 
 ## Running the Game
 
